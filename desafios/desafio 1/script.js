@@ -42,31 +42,35 @@ window.onload = function (){
     
     })()
     
-    const addfruta = document.querySelectorAll('#produtos')
+    const addfruta = document.querySelectorAll('#produtos > li')
     const cestaDoCliente = document.querySelector("#cestaDoCliente")
     const todaCestaCliente = document.querySelectorAll("#cestaDoCliente")
-    // console.log(addfruta);
-    // console.log(cestaDoCliente)
+    const cestaCliente = []
     
     addfruta.forEach(function(list){
         list.addEventListener('click', function(elemento){
-        let listLiCliente = document.createElement('li');
-    
-    
-        // cestaDoCliente.appendChild(listLiCliente).textContent = elemento.target.innerHTML;
-     //if (elemento == todaCestaCliente.innerHTML)
+ 
+        if( cestaCliente.indexOf(list.textContent) != -1){
+            alert(`a fruta ${elemento.target.innerHTML} já está no carrinho`)           
+            } else {   
+            let listLiCliente = document.createElement('li');
+            const pro = document.querySelector(`#produtos > li`)
+            const cesta = document.querySelector(`#cestaDoCliente > li`)
+            cestaCliente.push(list.textContent)
+            console.log(cestaCliente)
         for(let frt of frutas){        
-            for(listaF in frt){
-                if (listaF == 'preco'){
-                    cestaDoCliente.appendChild(listLiCliente).setAttribute('data-preco', frt[listaF])
-                } else {
-                    cestaDoCliente.appendChild(listLiCliente).textContent = elemento.target.innerHTML;
+            for(let listaF in frt){
+                    if (listaF == 'preco'){
+                        cestaDoCliente.appendChild(listLiCliente).setAttribute('data-preco', frt[listaF])
+                    } else {
+                        cestaDoCliente.appendChild(listLiCliente).textContent = elemento.target.innerHTML;
+                    }
                 }
-                
             }
         }
         
         //funcção calcular total
+        //NÃO MEXER
         function calculo (idProduto, resultado){
             const preco = document.querySelectorAll(`#${idProduto} > li`);
             const valorResultado = document.querySelector(`#${resultado}`);
@@ -75,7 +79,7 @@ window.onload = function (){
             for (let i of preco) {
                 T += Number(elemento.target.dataset.preco)
                 //um certo alguem ficou triste
-             console.log(i.dataset.preco)
+            //  console.log(elemento.target.dataset.preco)
             }
             valorResultado.value = T;
         }
