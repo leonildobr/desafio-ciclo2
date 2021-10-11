@@ -86,12 +86,18 @@ window.onload = function (){
     
         function removeFruta(id){
             const lista = document.querySelectorAll(`#${id} > li`);
-            for (let produto of lista) {
-                produto.addEventListener('click', function(){
-                    produto.remove();
-                    calculo('cestaDoCliente','mostraTotalCompra');
-                })
-            }
+            lista.forEach(function(lista){
+                // for (let produto of lista) {
+                    lista.addEventListener('click', function(){
+                        lista.remove();
+                        cestaCliente.pop(lista.textContent)
+                        console.log(cestaCliente)
+                        calculo('cestaDoCliente','mostraTotalCompra');
+                    })
+                //}
+        
+            })
+        
         }
         removeFruta('cestaDoCliente');
         calculo('cestaDoCliente','mostraTotalCompra');
