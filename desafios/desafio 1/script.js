@@ -78,7 +78,6 @@ window.onload = function (){
             
             for (let i of preco) {
                 T += Number(elemento.target.dataset.preco)
-                //um certo alguem ficou triste
             //  console.log(elemento.target.dataset.preco)
             }
             valorResultado.value = T;

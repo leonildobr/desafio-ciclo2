@@ -13,16 +13,16 @@ let dadosCep = async function(cep){
     try {
     let dadosFetch = await fetch(url);
     let dadosJson = await dadosFetch.json();
-    resultadoCep(dadosJson)
+    resultadoCep(dadosJson);
     } catch(error){
-        alert(error)
+        alert(error);
     }
 }
 
 const btnBuscar = document.querySelector('#buscarCep');
-const CEP_ = document.querySelector('#NumeroCep');
-
+const CEP_ = document.querySelector('#cep');
 btnBuscar.addEventListener('click',function(){
+    console.log(CEP_)
 
     dadosCep(CEP_.value)
 })
